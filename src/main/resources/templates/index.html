@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        .center {
+            margin: auto;
+            width: 60%;
+            border: 3px solid #73AD21;
+            padding: 10px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+<div class="center">
+    <h1>Ingresar un alumno</h1>
+
+    <form th:action="@{/form}" th:object="${estudiante}" method="delete">
+        <div class="form-group">
+            <label>Nombre del Alumno:</label>
+            <div class="col-sm-4">
+                <input class="form-control" type="text" th:field="*{nombre}">
+            </div>
+
+            <span th:errors="*{Nombre}" style=color:#FF0000></span><br>
+        </div>
+        <div class="form-group">
+            <label>Apellido:</label>
+            <div class="col-sm-4">
+                <input  class="form-control" type="text" th:field="*{apellido}">
+            </div>
+            <span th:errors="*{Apellido}" style=color:#FF0000></span><br>
+        </div>
+        <div class="form-group">
+            <label>Carne del alumno</label>
+            <div class="col-sm-4">
+                <input  class="form-control" type="text" th:field="*{carne}">
+            </div>
+            <span th:errors="*{Carne}" style=color:#FF0000></span><br>
+        </div>
+        <div class="form-group">
+            <label>Carrera:</label>
+            <div class="col-sm-4">
+                <input  class="form-control" type="text" th:field="*{carrera}">
+            </div>
+            <span th:errors="*{Carrera}" style=color:#FF0000></span><br>
+        </div>
+
+        <input type="submit"  class="btn btn-success" value="Agregar">
+
+    </form>
+    <a type="button" class="btn btn-info" href="/listado" >Ir a listado</a>
+    <br>
+    <form th:action="@{/deletear}"  method="post">
+        <label>Carne del alumno a eliminar </label>
+        <div class="col-sm-4">
+            <input  class="form-control" type="text" name="id">
+        </div>
+        <input type="submit"  class="btn btn-danger" value="Eliminar">
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
