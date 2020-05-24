@@ -25,17 +25,8 @@ public class MainController {
     @RequestMapping("/listado")
     public ModelAndView listado() {
 
-        ModelAndView mav = new ModelAndView();
-        List<Estudiante> estudiantes = null;
-        try{
-           estudiantes = estudianteService.findAll();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
 
-        mav.addObject("estudiantes", estudiantes);
-        mav.setViewName("listado");
-        return mav;
+        return auxVerLista();
     }
     @RequestMapping("/inicio")
     public ModelAndView inicio(){
@@ -69,19 +60,25 @@ public class MainController {
         List<Estudiante> estudiantes = null;
         try {
             estudianteService.eliminarEstudiante(id);
-            try{
-                estudiantes = estudianteService.findAll();
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-
-            mav.addObject("estudiantes", estudiantes);
-            mav.setViewName("listado");
-            return mav;
-        }catch (Exception e){
+            return auxVerLista();
+        }catch(Exception e){
             e.printStackTrace();
         }
         mav.setViewName("index");
+        return mav;
+    }
+
+    public ModelAndView auxVerLista(){
+        ModelAndView mav = new ModelAndView();
+        List<Estudiante> estudiantes = null;
+        try{
+            estudiantes = estudianteService.findAll();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        mav.addObject("estudiantes", estudiantes);
+        mav.setViewName("listado");
         return mav;
     }
 
